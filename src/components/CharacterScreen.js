@@ -8,11 +8,11 @@ const CharacterScreen = React.memo(() => {
    const { pathname } = useLocation()
 
    const [character, setCharacter] = useState([])
-   const characterId = pathname.charAt(pathname.length - 1)
+   const characterId = pathname.split('/')[2];
 
    useEffect(() => {
       (async () => {
-         const result = await fetch(`https://www.breakingbadapi.com/api/characters/${characterId}`)
+         const result = await fetch(`https://www.breakingbadapi.com/api/characters/${parseInt(characterId)}`)
          const data = await result.json()
          setCharacter(data)
       })()
