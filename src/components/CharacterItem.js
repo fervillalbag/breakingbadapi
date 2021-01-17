@@ -30,7 +30,7 @@ export default function CharacterItem({ character }) {
                   {job}
                </span>
             ))}
-            <Link className="character__link" to={`/${character.char_id}`}>
+            <Link className="character__link" to={`/character/${character.char_id}`}>
                Ver más
             </Link>
          </div>

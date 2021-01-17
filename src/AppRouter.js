@@ -12,8 +12,16 @@ const AppRouter = () => {
    return (
       <Router>
          <Switch>
-            <Route exact path="/" component={Character} />
-            <Route exact path="/character/:characterId" component={CharacterScreen} />
+            <Route
+               exact
+               path="/"
+               component={Character}
+            />
+            <Route
+               exact
+               path="/character/:characterId"
+               component={CharacterScreen}
+            />
          </Switch>
       </Router>
    );

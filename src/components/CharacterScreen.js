@@ -1,15 +1,33 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import CharacterItemScreen from './CharacterItemScreen'
 
-export default function CharacterScreen() {
+const CharacterScreen = React.memo(() => {
 
-   const location = useLocation()
-   console.log(location)
+   const { pathname } = useLocation()
+
+   const [character, setCharacter] = useState([])
+   const characterId = pathname.charAt(pathname.length - 1)
+
+   useEffect(() => {
+      (async () => {
+         const result = await fetch(`https://www.breakingbadapi.com/api/characters/${characterId}`)
+         const data = await result.json()
+         setCharacter(data)
+      })()
+   }, [characterId])
 
    return (
-      <div>
-         <h1>Character</h1>
+      <div className="container">
+         {character.map(item => (
+            <CharacterItemScreen
+               key={item.char_id}
+               item={item}
+            />
+         ))}
       </div>
    )
-}
+})
+
+export default CharacterScreen
