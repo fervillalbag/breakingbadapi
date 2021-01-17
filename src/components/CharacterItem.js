@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function CharacterItem({ character }) {
 
@@ -29,6 +30,9 @@ export default function CharacterItem({ character }) {
                   {job}
                </span>
             ))}
+            <Link className="character__link" to={`/${character.char_id}`}>
+               Ver más
+            </Link>
          </div>
       </div>
    )
